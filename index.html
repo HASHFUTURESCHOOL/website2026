@@ -154,8 +154,7 @@
                 <a href="#testimonials">Testimonials</a>
                 <a href="#faq">FAQ</a>
             </div>
-            <button class="nav-cta" data-tally-open="mOaLBp" data-tally-layout="modal" data-tally-width="500"
-                data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Book a Free Demo</button>
+            <button class="nav-cta open-admission-modal">Book a Free Demo</button>
             <button class="mobile-menu-btn" id="mobileMenuBtn">
                 <span></span>
                 <span></span>
@@ -170,8 +169,7 @@
         <a href="#curriculum">Curriculum</a>
         <a href="#testimonials">Testimonials</a>
         <a href="#faq">FAQ</a>
-        <button class="mobile-cta" data-tally-open="mOaLBp" data-tally-layout="modal" data-tally-width="500"
-            data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Book a Free Demo</button>
+        <button class="mobile-cta open-admission-modal">Book a Free Demo</button>
     </div>
 
     <!-- Hero Section -->
@@ -194,24 +192,32 @@
 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <span class="stat-number" data-count="200">0</span>
-                        <span class="stat-label">Active Students</span>
+                        <span class="stat-number" data-count="300">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Active Learners</span>
                     </div>
                     <div class="stat-divider"></div>
                     <div class="stat-item">
-                        <span class="stat-number" data-count="40">0</span><span class="stat-plus">+</span>
+                        <span class="stat-number" data-count="25">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Expert Facilitators</span>
                     </div>
                     <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <div class="rating-stars">★★★★★</div>
-                        <span class="stat-label">5.0 Parent Rating</span>
+                    <div id="googleReviewsBtn" class="stat-item google-review-stat" role="button" tabindex="0">
+                        <div class="stat-google-header">
+                            <span class="stat-rating-score">4.9</span>
+                            <div class="rating-stars">★★★★★</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 6px; margin-top: 4px;">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg"
+                                alt="Google" style="width: 16px; height: 16px;">
+                            <span class="stat-label"
+                                style="margin-top: 0; text-decoration: none; color: var(--text-light);">See Google
+                                Reviews</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="hero-cta-group">
-                    <button class="btn-primary" data-tally-open="mOaLBp" data-tally-layout="modal"
-                        data-tally-width="500" data-tally-emoji-text="👋" data-tally-emoji-animation="wave">
+                    <button class="btn-primary open-admission-modal">
                         <span>Book a Free Demo</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                             stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -246,10 +252,10 @@
                             class="hero-main-image"
                             style="border-radius: 24px; aspect-ratio: 16/9; width: 100%; height: 100%; object-fit: cover;">
                         <div class="floating-card card-1">
-                            <div class="card-icon">📚</div>
+                            <div class="card-icon">🤖</div>
                             <div class="card-content">
-                                <span class="card-number">370+</span>
-                                <span class="card-text">Courses Available</span>
+                                <span class="card-number" style="font-size: 1rem;">AI First</span>
+                                <span class="card-text">Education Model</span>
                             </div>
                         </div>
                         <div class="floating-card card-2">
@@ -550,10 +556,17 @@
                     </div>
                     <div class="video-info">
                         <div class="video-author">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/women/44.jpg" alt="Shamseena">
+                            <div class="youtube-avatar"
+                                style="width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #FF0000; display: flex; align-items: center; justify-content: center; color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
                             <div class="author-details">
-                                <h4>Shamseena</h4>
-                                <p>Counseling Psychologist</p>
+                                <h4>Milind & Family</h4>
+                                <p>Bengaluru</p>
                             </div>
                         </div>
                     </div>
@@ -569,11 +582,17 @@
                     </div>
                     <div class="video-info">
                         <div class="video-author">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/women/68.jpg"
-                                alt="Dr. Shabana CN">
+                            <div class="youtube-avatar"
+                                style="width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #FF0000; display: flex; align-items: center; justify-content: center; color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
                             <div class="author-details">
-                                <h4>Dr. Shabana CN & Bijumon K</h4>
-                                <p>Director, Kapstone Industries</p>
+                                <h4>Soorej & Family</h4>
+                                <p>Bengaluru</p>
                             </div>
                         </div>
                     </div>
@@ -589,11 +608,17 @@
                     </div>
                     <div class="video-info">
                         <div class="video-author">
-                            <img loading="lazy" src="https://randomuser.me/api/portraits/men/32.jpg"
-                                alt="Muhammad Musthafa">
+                            <div class="youtube-avatar"
+                                style="width: 48px; height: 48px; min-width: 48px; border-radius: 50%; background: #FF0000; display: flex; align-items: center; justify-content: center; color: white;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="currentColor">
+                                    <path
+                                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                                </svg>
+                            </div>
                             <div class="author-details">
-                                <h4>Muhammad Musthafa</h4>
-                                <p>Business Owner</p>
+                                <h4>Subin & Family</h4>
+                                <p>Kottayam</p>
                             </div>
                         </div>
                     </div>
@@ -736,8 +761,7 @@
 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img loading="lazy" src="https://www.hashfuture.school/assets/images/placeholder-user.png"
-                            alt="Shamseena">
+                        <img loading="lazy" src="https://randomuser.me/api/portraits/women/55.jpg" alt="Shamseena">
                         <div class="testimonial-author">
                             <h4>Shamseena</h4>
                             <p>Counseling Psychologist</p>
@@ -758,6 +782,8 @@
             </div>
         </div>
     </section>
+
+
 
     <!-- Student Voices Section (Reels) -->
     <section class="student-voices-section" id="student-voices">
@@ -974,7 +1000,7 @@
                 <div class="facilitator-card featured-facilitator">
                     <div class="facilitator-image">
                         <img loading="lazy"
-                            src="https://www.hashfuture.school/assets/hfs%20images/Untitled%20design.png"
+                            src="https://media.licdn.com/dms/image/v2/D5603AQHP01qWJ6c0rg/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690048600103?e=1743638400&v=beta&t=2LdFj5U8jQyYV6vV6Q7c8B4Xq7X9XyV5V6V7Xj8XyV5"
                             alt="Shihabudheen P.K">
                     </div>
                     <h4>Shihabudheen P.K</h4>
@@ -1274,8 +1300,19 @@
                     <span class="sticky-bar-subtitle">Transform Your Child's Future Today</span>
                 </div>
             </div>
-            <button class="sticky-bar-cta" data-tally-open="mOaLBp" data-tally-layout="modal" data-tally-width="500"
-                data-tally-emoji-text="👋" data-tally-emoji-animation="wave">Book a Free Demo</button>
+            <button class="sticky-bar-cta open-admission-modal">Book a Free Demo</button>
+        </div>
+    </div>
+
+    <!-- Admission Modal -->
+    <div id="admissionModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div
+                style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #fff;">
+                <iframe id="admissionFrame" src="" class="modal-iframe"
+                    allow="camera; microphone; autoplay; encrypted-media;"></iframe>
+            </div>
         </div>
     </div>
 
