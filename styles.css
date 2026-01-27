@@ -286,6 +286,7 @@ ul {
     top: 110px;
     left: 0;
     right: 0;
+    z-index: 9999;
     background: var(--bg-white);
     padding: 24px;
     display: none;
@@ -728,10 +729,12 @@ ul {
 }
 
 .problem-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
     margin-bottom: 48px;
+    align-items: stretch;
 }
 
 .problem-card {
@@ -741,6 +744,11 @@ ul {
     text-align: center;
     transition: var(--transition-normal);
     border: 1px solid transparent;
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
 .problem-card:hover {
@@ -950,8 +958,9 @@ ul {
 }
 
 .who-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 32px;
 }
 
@@ -962,6 +971,8 @@ ul {
     text-align: center;
     transition: var(--transition-normal);
     border: 2px solid transparent;
+    width: 340px;
+    flex-shrink: 0;
 }
 
 .who-card:hover {
@@ -2032,7 +2043,7 @@ ul {
     }
 
     .problem-grid {
-        grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .curriculum-grid {
@@ -2087,8 +2098,37 @@ ul {
     }
 
     .floating-card {
-        padding: 12px 16px;
-        font-size: 0.85rem;
+        padding: 8px 12px;
+        font-size: 0.75rem;
+        gap: 8px;
+    }
+
+    .card-icon {
+        font-size: 1.2rem;
+    }
+
+    .youtube-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card-number {
+        font-size: 0.9rem;
+    }
+
+    .floating-card.card-1 {
+        top: 20px;
+        left: -10px;
+    }
+
+    .floating-card.card-2 {
+        bottom: 80px;
+        right: -10px;
+    }
+
+    .floating-card.card-3 {
+        bottom: 10px;
+        left: 0;
     }
 
     .section-header h2 {
@@ -2264,4 +2304,89 @@ ul {
 /* Ensure author details take up available space */
 .author-details {
     flex-grow: 1;
+}
+
+/* ============================================
+   Colorful Card Borders
+   ============================================ */
+.problem-card,
+.who-card,
+.curriculum-card,
+.video-card,
+.testimonial-card,
+.reel-card,
+.facilitator-card,
+.fame-card,
+.outcome-card {
+    border-top-width: 4px;
+    border-top-style: solid;
+}
+
+/* Cycle through colors for cards */
+.problem-card:nth-child(4n+1),
+.who-card:nth-child(4n+1),
+.curriculum-card:nth-child(4n+1),
+.video-card:nth-child(4n+1),
+.testimonial-card:nth-child(4n+1),
+.reel-card:nth-child(4n+1),
+.facilitator-card:nth-child(4n+1),
+.fame-card:nth-child(4n+1),
+.outcome-card:nth-child(4n+1) {
+    border-top-color: var(--primary);
+}
+
+.problem-card:nth-child(4n+2),
+.who-card:nth-child(4n+2),
+.curriculum-card:nth-child(4n+2),
+.video-card:nth-child(4n+2),
+.testimonial-card:nth-child(4n+2),
+.reel-card:nth-child(4n+2),
+.facilitator-card:nth-child(4n+2),
+.fame-card:nth-child(4n+2),
+.outcome-card:nth-child(4n+2) {
+    border-top-color: var(--accent-blue);
+}
+
+.problem-card:nth-child(4n+3),
+.who-card:nth-child(4n+3),
+.curriculum-card:nth-child(4n+3),
+.video-card:nth-child(4n+3),
+.testimonial-card:nth-child(4n+3),
+.reel-card:nth-child(4n+3),
+.facilitator-card:nth-child(4n+3),
+.fame-card:nth-child(4n+3),
+.outcome-card:nth-child(4n+3) {
+    border-top-color: var(--accent-green);
+}
+
+.problem-card:nth-child(4n+4),
+.who-card:nth-child(4n+4),
+.curriculum-card:nth-child(4n+4),
+.video-card:nth-child(4n+4),
+.testimonial-card:nth-child(4n+4),
+.reel-card:nth-child(4n+4),
+.facilitator-card:nth-child(4n+4),
+.fame-card:nth-child(4n+4),
+.outcome-card:nth-child(4n+4) {
+    border-top-color: var(--accent-purple);
+}
+.btn-whatsapp-sticky {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--whatsapp-green);
+    color: white;
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    transition: var(--transition-normal);
+    font-size: 0.9rem;
+    box-shadow: 0 4px 6px -1px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp-sticky:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.4);
+    color: white;
 }

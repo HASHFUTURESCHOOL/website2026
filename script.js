@@ -382,13 +382,13 @@ function initAdmissionModal() {
         });
     });
 
-    // Auto open after 1 minute (60000ms)
+    // Auto open after 2 minutes (120000ms)
     setTimeout(() => {
         // Only open if not already open
         if (!modal.classList.contains('show')) {
             openModal();
         }
-    }, 60000);
+    }, 120000);
 
     // Close modal function
     const closeModal = () => {
