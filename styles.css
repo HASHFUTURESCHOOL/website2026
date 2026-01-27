@@ -121,11 +121,67 @@ ul {
 }
 
 /* ============================================
+   Top Bar
+   ============================================ */
+.top-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1001;
+    background: var(--bg-dark);
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.top-bar-container {
+    max-width: var(--container-wide);
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.contact-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.contact-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-white);
+    font-size: 0.85rem;
+    font-weight: 500;
+    opacity: 0.9;
+    transition: var(--transition-fast);
+}
+
+.contact-link:hover {
+    opacity: 1;
+    color: var(--primary);
+}
+
+.contact-link svg {
+    color: var(--primary);
+}
+
+.divider {
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+}
+
+/* ============================================
    Navigation
    ============================================ */
 .navbar {
     position: fixed;
-    top: 0;
+    top: 40px;
     left: 0;
     right: 0;
     z-index: 1000;
@@ -227,7 +283,7 @@ ul {
 
 .mobile-menu {
     position: fixed;
-    top: 70px;
+    top: 110px;
     left: 0;
     right: 0;
     background: var(--bg-white);
@@ -1046,8 +1102,9 @@ ul {
 }
 
 .video-testimonials {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
     margin-bottom: 60px;
 }
@@ -1058,6 +1115,7 @@ ul {
     overflow: hidden;
     box-shadow: var(--shadow-lg);
     transition: var(--transition-normal);
+    width: calc(33.333% - 16px);
 }
 
 .video-card:hover {
@@ -1326,8 +1384,9 @@ ul {
 }
 
 .facilitators-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
     max-width: 1000px;
     margin: 0 auto;
@@ -1339,6 +1398,8 @@ ul {
     background: var(--bg-white);
     border-radius: var(--radius-xl);
     transition: var(--transition-normal);
+    width: 200px;
+    flex-shrink: 0;
 }
 
 .facilitator-card:hover {
@@ -1386,6 +1447,155 @@ ul {
 .facilitator-card p {
     font-size: 0.85rem;
     color: var(--text-light);
+}
+
+/* ============================================
+   Hall of Fame Section
+   ============================================ */
+.hall-of-fame-section {
+    padding: var(--section-padding) 0;
+    background: var(--bg-light);
+}
+
+.fame-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+}
+
+.fame-card {
+    background: var(--bg-white);
+    padding: 32px 24px;
+    border-radius: var(--radius-xl);
+    text-align: center;
+    transition: var(--transition-normal);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    width: 320px;
+    flex-shrink: 0;
+}
+
+.fame-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.fame-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    padding: 3px;
+    border: 3px solid var(--bg-blue-tint);
+    object-fit: cover;
+    background: var(--bg-white);
+}
+
+.fame-card h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 8px;
+}
+
+.fame-role {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--bg-light);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.fame-card p {
+    font-size: 0.95rem;
+    color: var(--text-medium);
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+.fame-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: var(--transition-normal);
+}
+
+.fame-link:hover {
+    gap: 12px;
+}
+
+@media (max-width: 900px) {
+    .fame-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .fame-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .fame-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ============================================
+   News & Media Section
+   ============================================ */
+.news-section {
+    padding: var(--section-padding) 0;
+    background: var(--bg-white);
+}
+
+.news-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.news-card {
+    transition: var(--transition-normal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    cursor: pointer;
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.news-card:hover {
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+.news-logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    transition: var(--transition-normal);
+}
+
+.news-card:hover .news-logo {
+    filter: grayscale(0%);
 }
 
 /* ============================================
@@ -1777,8 +1987,8 @@ ul {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .video-testimonials {
-        grid-template-columns: 1fr;
+    .video-testimonials .video-card {
+        width: 100%;
     }
 
     .text-testimonials {
@@ -2054,8 +2264,4 @@ ul {
 /* Ensure author details take up available space */
 .author-details {
     flex-grow: 1;
-}
-/* Center align facilitators grid */
-.facilitators-grid {
-    justify-content: center;
 }
