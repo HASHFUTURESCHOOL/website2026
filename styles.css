@@ -2370,6 +2370,7 @@ ul {
 .outcome-card:nth-child(4n+4) {
     border-top-color: var(--accent-purple);
 }
+
 .btn-whatsapp-sticky {
     display: inline-flex;
     align-items: center;
@@ -2389,4 +2390,199 @@ ul {
     transform: translateY(-2px);
     box-shadow: 0 10px 15px -3px rgba(37, 211, 102, 0.4);
     color: white;
+}
+
+/* ============================================
+   Admission Form Modal (Native)
+   ============================================ */
+.modal-form-container {
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.modal-header h2 {
+    color: var(--primary);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.modal-header p {
+    color: var(--text-medium);
+    font-size: 1rem;
+}
+
+.demo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.form-group input {
+    padding: 12px 16px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 1rem;
+    color: var(--text-dark);
+    transition: var(--transition-fast);
+    background: var(--bg-light);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+    background: var(--bg-white);
+    box-shadow: 0 0 0 3px rgba(255, 75, 75, 0.1);
+}
+
+.btn-full {
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    border: none;
+    padding: 16px;
+    font-size: 1.1rem;
+    border-radius: var(--radius-md);
+    background: var(--primary-gradient);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-normal);
+    box-shadow: var(--shadow-primary);
+}
+
+.btn-full:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 50px -10px rgba(255, 75, 75, 0.5);
+}
+
+@media (max-width: 600px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .modal-form-container {
+        padding: 24px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Custom Checkbox */
+.checkbox-group {
+    margin-top: 8px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    user-select: none;
+    color: var(--text-dark);
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: var(--bg-light);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    transition: var(--transition-fast);
+}
+
+.checkbox-container:hover input~.checkmark {
+    background-color: #eee;
+}
+
+.checkbox-container input:checked~.checkmark {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.checkbox-container input:checked~.checkmark:after {
+    display: block;
+}
+
+.checkbox-container .checkmark:after {
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Form Message */
+.form-message {
+    padding: 10px;
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    display: none;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-message.success {
+    display: block;
+    background-color: rgba(34, 197, 94, 0.1);
+    /* green-100 */
+    color: var(--accent-green);
+    border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.form-message.error {
+    display: block;
+    background-color: rgba(255, 75, 75, 0.1);
+    /* primary-red-100 */
+    color: var(--primary);
+    border: 1px solid rgba(255, 75, 75, 0.2);
 }

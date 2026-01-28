@@ -350,21 +350,13 @@ if (isTouchDevice()) {
 // ============================================
 function initAdmissionModal() {
     const modal = document.getElementById('admissionModal');
-    const iframe = document.getElementById('admissionFrame');
     const closeBtn = document.querySelector('.close-modal');
+    const form = document.getElementById('demoBookingForm');
 
-    // Using a specific URL for Book a Demo
-    const demoUrl = "https://futureassist.hashfuture.school/admissions/demo";
-
-    if (!modal || !iframe || !closeBtn) return;
+    if (!modal || !closeBtn) return;
 
     // Open modal function
     const openModal = () => {
-        // Set source if not already set or different
-        if (iframe.src !== demoUrl) {
-            iframe.src = demoUrl;
-        }
-
         modal.style.display = 'block';
         // Use setTimeout to allow display:block to apply before adding class for transition
         setTimeout(() => {
@@ -395,8 +387,6 @@ function initAdmissionModal() {
         modal.classList.remove('show');
         setTimeout(() => {
             modal.style.display = 'none';
-            // Optional: reset iframe source to stop video/audio if any
-            // iframe.src = ''; 
         }, 300);
         document.body.style.overflow = '';
     };
@@ -416,6 +406,118 @@ function initAdmissionModal() {
             closeModal();
         }
     });
+
+    // Handle Form Submission
+    if (form) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.textContent;
+
+            // Clear previous messages
+            const messageDiv = document.getElementById('formMessage');
+            messageDiv.className = 'form-message';
+            messageDiv.textContent = '';
+
+            // 1. Check ReCAPTCHA
+            const captchaResponse = grecaptcha.getResponse();
+            if (captchaResponse.length === 0) {
+                messageDiv.textContent = 'Please complete the CAPTCHA verification.';
+                messageDiv.classList.add('error');
+                return; // Stop submission
+            }
+
+            // Note: Ideally, you should verify the 'captchaResponse' token on your server (PHP) 
+            // using your Secret Key to ensure the request is genuine.
+
+            btn.textContent = 'Submitting...';
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const payload = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                age: formData.get('childAge'), // Map childAge to API's expected 'age' field
+                location: formData.get('location')
+            };
+
+            try {
+                // 1. Try the PHP Proxy (Standard for shared hosting/cPanel)
+                // This bypasses CORS by making the request Server-to-Server
+                let response;
+                const proxyUrl = 'admissions-proxy.php';
+                const directUrl = 'https://futureassist.hashfuture.school/api/admissions/demo';
+
+                try {
+                    response = await fetch(proxyUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                } catch (err) {
+                    console.log('PHP Proxy connection failed/missing, trying direct...');
+                }
+
+                // 2. If PHP proxy fails (e.g. static hosting, 404, or 500 error), try direct connection
+                // This is a fallback for testing or CORS-enabled environments
+                if (!response || !response.ok) {
+                    // Only retry direct if the proxy explicitly failed (404/504) or network error
+                    // If proxy returned 400/403/etc from the *real* API, we shouldn't retry, but for simplicity we fall through
+                    if (!response || response.status === 404 || response.status === 405) {
+                        console.log('Falling back to direct API connection...');
+                        response = await fetch(directUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+                    }
+                }
+
+                if (response.ok) {
+                    // SUCCESS: Hide form fields and show big success message with animation
+                    form.innerHTML = `
+                        <div style="text-align: center; padding: 40px 0; animation: fadeInUp 0.5s ease;">
+                            <div style="width: 64px; height: 64px; background: #dcfce7; color: #16a34a; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </div>
+                            <h3 style="color: var(--text-dark); margin-bottom: 10px; font-size: 1.5rem;">Thank You!</h3>
+                            <p style="color: var(--text-medium); font-size: 1.1rem; max-width: 400px; margin: 0 auto;">
+                                Your demo request has been received. Our team will contact you shortly to schedule your personalized session.
+                            </p>
+                            <button onclick="document.querySelector('.close-modal').click()" class="btn-primary" style="margin-top: 30px; padding: 12px 24px; font-size: 1rem;">Close</button>
+                        </div>
+                    `;
+                    // Don't modify modal header, just the form body
+                    document.querySelector('.modal-header').style.display = 'none'; // Hide the "Book a Demo" header too for a cleaner look
+
+                } else {
+                    const errorData = await response.json().catch(() => ({}));
+                    console.error('Submission failed:', errorData);
+                    throw new Error(errorData.message || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Form submission error:', error);
+
+                // Show error message inline
+                let errorMsg = 'We encountered a temporary issue. Please try again.';
+
+                if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+                    errorMsg = 'Submission Warning (Localhost): CORs restriction prevented submission. Use server for testing.';
+                }
+
+                messageDiv.textContent = errorMsg;
+                messageDiv.classList.add('error');
+
+                // Reset button
+                btn.textContent = originalText;
+                btn.disabled = false;
+            }
+        });
+    }
 }
 
 // ============================================

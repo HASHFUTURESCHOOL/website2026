@@ -139,6 +139,8 @@
       ]
     }
     </script>
+    <!-- ReCAPTCHA Script -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>
@@ -1652,10 +1654,49 @@
     <div id="admissionModal" class="modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
-            <div
-                style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; background: #fff;">
-                <iframe id="admissionFrame" src="" class="modal-iframe"
-                    allow="camera; microphone; autoplay; encrypted-media;"></iframe>
+            <div class="modal-form-container">
+                <div class="modal-header">
+                    <h2>Book a Free Demo</h2>
+                    <p>Experience the future of education with a personalized session.</p>
+                </div>
+                <form id="demoBookingForm" class="demo-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="firstName">First Name *</label>
+                            <input type="text" id="firstName" name="firstName" placeholder="John" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <input type="text" id="lastName" name="lastName" placeholder="Doe">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+91 99999 99999" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="childAge">Child's Age</label>
+                            <input type="number" id="childAge" name="childAge" placeholder="Age">
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" placeholder="City">
+                        </div>
+                    </div>
+                    <!-- ReCAPTCHA Widget -->
+                    <div class="form-group" style="display: flex; justify-content: center; margin-top: 10px;">
+                        <!-- REPLACE data-sitekey with your own Site Key from Google Admin Console -->
+                        <div class="g-recaptcha" data-sitekey="6LfHmFgsAAAAACbX36yDZ_oIUDjvoBZPVJU8kv0p"></div>
+                    </div>
+
+                    <div id="formMessage" class="form-message"></div>
+                    <button type="submit" class="btn-primary btn-full">Book Free Demo</button>
+                </form>
             </div>
         </div>
     </div>
